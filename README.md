@@ -23,9 +23,9 @@ Maven
 </repository>
 
 <dependency>
-    <groupId>xy</groupId>
-    <artifactId>xy</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <groupId>de.glaubekeinemdev</groupId>
+    <artifactId>Discord-Utilities</artifactId>
+    <version>1.1-SNAPSHOT</version>
 </dependency>
 ```
 
@@ -33,4 +33,4 @@ Now you're done! You can start by creating an instance of the
 [DiscordBot](https://github.com/GlaubeKeinemDev/JDA-Utilities/blob/master/src/main/java/de/glaubekeinemdev/discordutilities/DiscordBot.java).
 
 More information how to use the library
-[Wiki](https://xy).
+[Wiki](https://github.com/GlaubeKeinemDev/JDA-Utilities/wiki).
