@@ -30,7 +30,7 @@ Maven
 ```
 
 Now you're done! You can start by creating an instance of the 
-[DiscordBot](https://xy).
+[DiscordBot](https://github.com/GlaubeKeinemDev/JDA-Utilities/blob/master/src/main/java/de/glaubekeinemdev/discordutilities/DiscordBot.java).
 
 More information how to use the library
 [Wiki](https://xy).
