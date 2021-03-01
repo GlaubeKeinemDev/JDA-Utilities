@@ -1,5 +1,6 @@
 package de.glaubekeinemdev.discordutilities.menus;
 
+import de.glaubekeinemdev.discordutilities.menus.helper.MenuHelper;
 import net.dv8tion.jda.api.entities.*;
 import net.dv8tion.jda.api.requests.restaction.MessageAction;
 
@@ -38,6 +39,7 @@ public abstract class Menu {
     }
 
     public void setCancelled(boolean cancelled) {
+        MenuHelper.getInstance().getMenuCache().remove(this);
         this.cancelled = cancelled;
     }
 

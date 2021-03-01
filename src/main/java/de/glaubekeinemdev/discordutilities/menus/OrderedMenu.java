@@ -1,5 +1,6 @@
 package de.glaubekeinemdev.discordutilities.menus;
 
+import de.glaubekeinemdev.discordutilities.menus.helper.MenuHelper;
 import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.MessageBuilder;
 import net.dv8tion.jda.api.entities.*;
@@ -10,6 +11,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.function.BiConsumer;
+import java.util.function.Consumer;
 
 public class OrderedMenu extends Menu {
 
@@ -24,12 +26,12 @@ public class OrderedMenu extends Menu {
     private final ArrayList<String> choices;
     private final boolean useCancelButton;
 
-    private final BiConsumer<Message, Integer> action;
+    private final BiConsumer<OrderedMenu, Integer> action;
 
     private Message message;
 
     public OrderedMenu(long timeOut, List<User> usableUsers, String text, Color color, String description,
-                       BiConsumer<Message, Integer> action, boolean useNumbers, ArrayList<String> choices, boolean useCancelButton) {
+                       BiConsumer<OrderedMenu, Integer> action, boolean useNumbers, ArrayList<String> choices, boolean useCancelButton) {
         super(timeOut, usableUsers);
         this.text = text;
         this.color = color;
@@ -38,6 +40,8 @@ public class OrderedMenu extends Menu {
         this.action = action;
         this.choices = choices;
         this.useCancelButton = useCancelButton;
+
+        MenuHelper.getInstance().getMenuCache().add(this);
     }
 
     @Override
@@ -71,7 +75,9 @@ public class OrderedMenu extends Menu {
             return;
         }
 
-        action.accept(message, getNumber(messageReaction.getReactionEmote().getName()));
+        final OrderedMenu orderedMenu = this;
+
+        messageReaction.removeReaction(member.getUser()).queue(unused -> action.accept(orderedMenu, getNumber(messageReaction.getReactionEmote().getName())));
     }
 
     @Override
@@ -98,12 +104,11 @@ public class OrderedMenu extends Menu {
             message = sentMessage;
 
             for(int i = 0; i < choices.size(); i++) {
-                if(i < this.choices.size() - 1) {
-                    sentMessage.addReaction(getEmoji(i)).queue();
-                } else if(useCancelButton) {
-                    sentMessage.addReaction("❌").queue();
-                }
+                sentMessage.addReaction(getEmoji(i)).queue();
             }
+
+            if(useCancelButton)
+                sentMessage.addReaction("❌").queue();
         });
     }
 
@@ -124,6 +129,10 @@ public class OrderedMenu extends Menu {
         ).build());
 
         return messageBuilder.build();
+    }
+
+    public Message getEffectiveMessage() {
+        return this.message;
     }
 
     private String getEmoji(int index) {
@@ -150,7 +159,7 @@ public class OrderedMenu extends Menu {
         private String description;
         private final ArrayList<User> usableUser = new ArrayList<>();
         private final ArrayList<String> choices = new ArrayList<>();
-        private BiConsumer<Message, Integer> action;
+        private BiConsumer<OrderedMenu, Integer> action;
         private boolean useNumbers = false;
         private boolean useCancelButton = false;
 
@@ -184,7 +193,7 @@ public class OrderedMenu extends Menu {
             return this;
         }
 
-        public Builder setAction(final BiConsumer<Message, Integer> consumer) {
+        public Builder setAction(final BiConsumer<OrderedMenu, Integer> consumer) {
             this.action = consumer;
             return this;
         }

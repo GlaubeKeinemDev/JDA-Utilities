@@ -52,7 +52,7 @@ public class PagedMenu extends Menu {
             if(currentPage == maxPages)
                 return;
 
-            this.currentPage = currentPage + 1;
+            this.currentPage = this.currentPage + 1;
             message.editMessage(getPage(currentPage)).queue();
             return;
         }
@@ -64,7 +64,7 @@ public class PagedMenu extends Menu {
             if(currentPage == 1)
                 return;
 
-            this.currentPage = currentPage - 1;
+            this.currentPage = this.currentPage - 1;
             message.editMessage(getPage(currentPage)).queue();
             return;
         }

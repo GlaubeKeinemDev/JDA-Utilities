@@ -18,7 +18,7 @@ public class MenuHelper {
     }
 
     public void setup(final JDA jda) {
-        jda.addEventListener(new MenuListener(jda));
+        new MenuListener(jda);
         scheduledExecutorService = Executors.newScheduledThreadPool(1);
 
         scheduledExecutorService.scheduleAtFixedRate(() -> {
