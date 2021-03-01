@@ -23,9 +23,9 @@ Maven
 </repository>
 
 <dependency>
-    <groupId>de.glaubekeinemdev</groupId>
-    <artifactId>Discord-Utilities</artifactId>
-    <version>1.1-SNAPSHOT</version>
+    <groupId>com.github.GlaubeKeinemDev</groupId>
+    <artifactId>JDA-Utilities</artifactId>
+    <version>1.2-SNAPSHOT</version>
     <scope>compile</scope>
 </dependency>
 ```
