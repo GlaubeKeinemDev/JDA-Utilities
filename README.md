@@ -37,7 +37,7 @@ repositories {
 }
 
 dependencies {
-   implementation 'com.github.GlaubeKeinemDev:JDA-Utilities:1.2-SNAPSHOT'
+    implementation 'com.github.GlaubeKeinemDev:JDA-Utilities:1.2-SNAPSHOT'
 }
 ```
 
