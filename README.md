@@ -15,6 +15,8 @@ A Java project with minimum java 8. This library has already compiled stuff like
 ## How to use
 Add the repository and dependency to your plugin:
 
+[![](https://jitpack.io/v/GlaubeKeinemDev/JDA-Utilities.svg)](https://jitpack.io/#GlaubeKeinemDev/JDA-Utilities)
+
 Maven
 ```xml
 <repository>
