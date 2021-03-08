@@ -23,11 +23,22 @@ Maven
 </repository>
 
 <dependency>
-    <groupId>de.glaubekeinemdev</groupId>
-    <artifactId>Discord-Utilities</artifactId>
-    <version>1.1-SNAPSHOT</version>
+    <groupId>com.github.GlaubeKeinemDev</groupId>
+    <artifactId>JDA-Utilities</artifactId>
+    <version>1.2-SNAPSHOT</version>
     <scope>compile</scope>
 </dependency>
+```
+
+Gradle
+```xml
+repositories {
+    maven { url 'https://jitpack.io' }
+}
+
+dependencies {
+    implementation 'com.github.GlaubeKeinemDev:JDA-Utilities:1.2-SNAPSHOT'
+}
 ```
 
 Now you're done! You can start by creating an instance of the 
