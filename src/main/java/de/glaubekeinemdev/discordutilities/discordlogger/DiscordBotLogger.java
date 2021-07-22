@@ -26,19 +26,21 @@ public class DiscordBotLogger extends Logger {
     private final String name = System.getProperty("user.name");
     private final String prompt;
 
-    public DiscordBotLogger(final String prompt) {
+    public DiscordBotLogger(final String prompt, final boolean changeDefaultCharset) {
         super("DiscordBotLogger", null);
 
         this.prompt = name + "@" + prompt + " $ ";
 
         try {
-            System.err.close();
+            if(changeDefaultCharset) {
+                System.err.close();
 
-            final Field field = Charset.class.getDeclaredField("defaultCharset");
-            field.setAccessible(true);
-            field.set(null, StandardCharsets.UTF_8);
+                final Field field = Charset.class.getDeclaredField("defaultCharset");
+                field.setAccessible(true);
+                field.set(null, StandardCharsets.UTF_8);
 
-            System.setErr(System.out);
+                System.setErr(System.out);
+            }
 
             if(!Files.exists(Paths.get("logs"))) {
                 Files.createDirectory(Paths.get("logs"));

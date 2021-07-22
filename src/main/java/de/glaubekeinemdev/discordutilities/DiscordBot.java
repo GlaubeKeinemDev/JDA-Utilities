@@ -119,7 +119,11 @@ public class DiscordBot {
     }
 
     public void setupLogger(final String prompt) {
-        this.logger = new DiscordBotLogger(prompt);
+        this.logger = new DiscordBotLogger(prompt, true);
+    }
+
+    public void setupLogger(final String prompt, final boolean changeDefaultCharSet) {
+        this.logger = new DiscordBotLogger(prompt, changeDefaultCharSet);
     }
 
     public JDA getJda() {
