@@ -132,7 +132,7 @@ public class PagedMenu extends Menu {
 
         embedBuilder.addField("", stringBuilder.toString(), false);
 
-        messageBuilder.setEmbed(embedBuilder.build());
+        messageBuilder.setEmbeds(embedBuilder.build());
         return messageBuilder.build();
     }
 

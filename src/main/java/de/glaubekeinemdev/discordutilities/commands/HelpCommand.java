@@ -59,7 +59,7 @@ public class HelpCommand extends Command {
             }
         });
 
-        channel.sendMessage(embedBuilder.build()).queue();
+        channel.sendMessageEmbeds(embedBuilder.build()).queue();
         message.delete().queue();
     }
 }

@@ -124,7 +124,7 @@ public class OrderedMenu extends Menu {
             stringBuilder.append("\n").append(getEmoji(i)).append(" ").append(choices.get(i));
         }
 
-        messageBuilder.setEmbed((new EmbedBuilder()).setColor(this.color).setDescription((
+        messageBuilder.setEmbeds((new EmbedBuilder()).setColor(this.color).setDescription((
                 this.description != null ? this.description + stringBuilder.toString() : stringBuilder.toString())
         ).build());
 

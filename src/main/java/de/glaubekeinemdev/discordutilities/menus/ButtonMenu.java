@@ -108,7 +108,7 @@ public class ButtonMenu extends Menu {
         }
 
         if (this.description != null) {
-            messageBuilder.setEmbed((new EmbedBuilder()).setColor((this.color != null ? this.color : Color.GREEN))
+            messageBuilder.setEmbeds((new EmbedBuilder()).setColor((this.color != null ? this.color : Color.GREEN))
                     .setDescription(this.description).build());
         }
 

@@ -6,7 +6,7 @@ import net.dv8tion.jda.api.entities.Guild;
 import net.dv8tion.jda.api.entities.Member;
 import net.dv8tion.jda.api.entities.Message;
 import net.dv8tion.jda.api.entities.TextChannel;
-import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
+import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
 
 import javax.annotation.Nonnull;
@@ -90,15 +90,17 @@ public class CommandCore extends ListenerAdapter {
         final AbstractEmbedBuilder embedBuilder = discordBot.getEmbedBuilder().setTitle("Fehlende Berechtigung")
                 .setDefaultFooter(member).setColor(Color.RED);
 
-        textChannel.sendMessage(embedBuilder.build()).queue();
+        textChannel.sendMessageEmbeds(embedBuilder.build()).queue();
     }
 
     @Override
-    public void onGuildMessageReceived(@Nonnull GuildMessageReceivedEvent event) {
+    public void onMessageReceived(@Nonnull MessageReceivedEvent event) {
         if(event.getAuthor().isBot())
             return;
+        if(!event.isFromGuild())
+            return;
 
-        handleInput(event.getMessage().getContentRaw().trim(), event.getMember(), event.getGuild(), event.getChannel(), event.getMessage());
+        handleInput(event.getMessage().getContentRaw().trim(), event.getMember(), event.getGuild(), event.getTextChannel(), event.getMessage());
     }
 
     public String getCommandPrefix() {
