@@ -6,7 +6,7 @@
 
     <groupId>de.glaubekeinemdev</groupId>
     <artifactId>Discord-Utilities</artifactId>
-    <version>1.5-SNAPSHOT</version>
+    <version>1.6-SNAPSHOT</version>
 
     <build>
         <defaultGoal>clean install</defaultGoal>
