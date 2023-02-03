@@ -14,7 +14,6 @@ public class ShutDownHook extends Thread {
     @Override
     public void run() {
         discordBot.getJda().shutdownNow();
-        discordBot.getLogger().shutdownAll();
         discordBot.getDataBaseManager().saveAllDataBases();
         MenuHelper.getInstance().shutdown();
     }
@@ -22,7 +21,6 @@ public class ShutDownHook extends Thread {
     @Override
     public synchronized void start() {
         discordBot.getJda().shutdownNow();
-        discordBot.getLogger().shutdownAll();
         discordBot.getDataBaseManager().saveAllDataBases();
         MenuHelper.getInstance().shutdown();
     }
