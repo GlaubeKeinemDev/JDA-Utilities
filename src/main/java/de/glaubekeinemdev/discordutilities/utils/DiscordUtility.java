@@ -12,6 +12,7 @@ public class DiscordUtility {
     public static Collection<GatewayIntent> getGateWayIntents() {
         List<GatewayIntent> intents = new ArrayList<>();
         intents.add(GatewayIntent.GUILD_MEMBERS);
+        intents.add(GatewayIntent.MESSAGE_CONTENT);
         intents.add(GatewayIntent.GUILD_MESSAGES);
         intents.add(GatewayIntent.GUILD_MESSAGE_TYPING);
         intents.add(GatewayIntent.DIRECT_MESSAGES);

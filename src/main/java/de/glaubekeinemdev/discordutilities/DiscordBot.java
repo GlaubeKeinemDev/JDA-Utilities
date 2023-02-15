@@ -13,6 +13,12 @@ import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.JDABuilder;
 import net.dv8tion.jda.api.OnlineStatus;
 import net.dv8tion.jda.api.entities.Activity;
+import net.dv8tion.jda.api.requests.GatewayIntent;
+import net.dv8tion.jda.api.utils.cache.CacheFlag;
+
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 
 public class DiscordBot {
 
@@ -21,6 +27,9 @@ public class DiscordBot {
     private CommandCore commandCore;
     private AbstractEmbedBuilder embedBuilder;
     private DataBaseManager dataBaseManager;
+    private Collection<GatewayIntent> intents;
+    private Collection<CacheFlag> cacheFlags;
+
 
     private DiscordBotLogger logger;
 
@@ -46,9 +55,39 @@ public class DiscordBot {
         this.activity = activity;
     }
 
+    public void addCustomGateWayIntent(GatewayIntent gatewayIntent) {
+        this.intents.add(gatewayIntent);
+    }
+
+    public void addCustomCacheFlag(CacheFlag cacheFlag) {
+        this.cacheFlags.add(cacheFlag);
+    }
+
+    public Collection<CacheFlag> getCacheFlags() {
+        Collection<CacheFlag> list = DiscordUtility.getCacheFlags();
+
+        for (CacheFlag cacheFlag : this.cacheFlags) {
+            if(!list.contains(cacheFlag))
+                list.add(cacheFlag);
+        }
+
+        return list;
+    }
+
+    public Collection<GatewayIntent> getIntents() {
+        Collection<GatewayIntent> list = DiscordUtility.getGateWayIntents();
+
+        for (GatewayIntent intent : this.intents) {
+            if(!list.contains(intent))
+                list.add(intent);
+        }
+
+        return list;
+    }
+
     public JDA start() throws Exception {
-        this.jda = JDABuilder.create(token, DiscordUtility.getGateWayIntents())
-                .enableCache(DiscordUtility.getCacheFlags())
+        this.jda = JDABuilder.create(token, getIntents())
+                .enableCache(getCacheFlags())
                 .setStatus(onlineStatus)
                 .setActivity(activity)
                 .setBulkDeleteSplittingEnabled(true)
