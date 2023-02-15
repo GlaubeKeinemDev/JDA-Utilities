@@ -3,7 +3,8 @@ package de.glaubekeinemdev.discordutilities.commands.core;
 import net.dv8tion.jda.api.entities.Member;
 import net.dv8tion.jda.api.entities.Message;
 import net.dv8tion.jda.api.entities.Role;
-import net.dv8tion.jda.api.entities.TextChannel;
+import net.dv8tion.jda.api.entities.channel.concrete.TextChannel;
+import net.dv8tion.jda.api.entities.channel.unions.MessageChannelUnion;
 
 import java.util.List;
 
@@ -41,7 +42,7 @@ public abstract class Command {
      * @param args    the arguments, the command was executed with
      * @param command the executed commandName without Prefix
      */
-    public abstract void execute(final String[] args, final String command, final Member commandSender, final TextChannel channel, final Message message);
+    public abstract void execute(final String[] args, final String command, final Member commandSender, final MessageChannelUnion channel, final Message message);
 
     /**
      * This is a permission check with checks if the user is able to execute the command

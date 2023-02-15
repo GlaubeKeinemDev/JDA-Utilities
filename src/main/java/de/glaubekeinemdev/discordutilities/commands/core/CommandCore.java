@@ -5,11 +5,11 @@ import de.glaubekeinemdev.discordutilities.utils.AbstractEmbedBuilder;
 import net.dv8tion.jda.api.entities.Guild;
 import net.dv8tion.jda.api.entities.Member;
 import net.dv8tion.jda.api.entities.Message;
-import net.dv8tion.jda.api.entities.TextChannel;
+import net.dv8tion.jda.api.entities.channel.concrete.TextChannel;
+import net.dv8tion.jda.api.entities.channel.unions.MessageChannelUnion;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
 
-import javax.annotation.Nonnull;
 import java.awt.*;
 import java.util.concurrent.CopyOnWriteArrayList;
 
@@ -33,7 +33,7 @@ public class CommandCore extends ListenerAdapter {
         commands.add(command);
     }
 
-    public boolean handleInput(final String line, final Member sender, final Guild guild, final TextChannel channel, final Message sentMessage) {
+    public boolean handleInput(final String line, final Member sender, final Guild guild, final MessageChannelUnion channel, final Message sentMessage) {
         if(!line.isEmpty() && Character.toString(line.charAt(0)).equals(commandPrefix)) {
             String[] message = line.split(" ");
 
@@ -86,7 +86,7 @@ public class CommandCore extends ListenerAdapter {
         return false;
     }
 
-    public void sendNoPermission(final TextChannel textChannel, final Member member, final String command) {
+    public void sendNoPermission(final MessageChannelUnion textChannel, final Member member, final String command) {
         final AbstractEmbedBuilder embedBuilder = discordBot.getEmbedBuilder().setTitle("Fehlende Berechtigung")
                 .setDefaultFooter(member).setColor(Color.RED);
 
@@ -94,13 +94,13 @@ public class CommandCore extends ListenerAdapter {
     }
 
     @Override
-    public void onMessageReceived(@Nonnull MessageReceivedEvent event) {
+    public void onMessageReceived(MessageReceivedEvent event) {
         if(event.getAuthor().isBot())
             return;
         if(!event.isFromGuild())
             return;
 
-        handleInput(event.getMessage().getContentRaw().trim(), event.getMember(), event.getGuild(), event.getTextChannel(), event.getMessage());
+        handleInput(event.getMessage().getContentRaw().trim(), event.getMember(), event.getGuild(), event.getChannel(), event.getMessage());
     }
 
     public String getCommandPrefix() {

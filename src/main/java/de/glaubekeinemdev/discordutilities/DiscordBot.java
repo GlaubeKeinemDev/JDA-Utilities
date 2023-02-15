@@ -5,7 +5,6 @@ import de.glaubekeinemdev.discordutilities.commands.core.Command;
 import de.glaubekeinemdev.discordutilities.commands.core.CommandCore;
 import de.glaubekeinemdev.discordutilities.database.DataBaseManager;
 import de.glaubekeinemdev.discordutilities.discordlogger.DiscordBotLogger;
-import de.glaubekeinemdev.discordutilities.menus.helper.MenuHelper;
 import de.glaubekeinemdev.discordutilities.utils.AbstractEmbedBuilder;
 import de.glaubekeinemdev.discordutilities.utils.DiscordUtility;
 import de.glaubekeinemdev.discordutilities.utils.ShutDownHook;
@@ -57,7 +56,7 @@ public class DiscordBot {
                 .build()
                 .awaitReady();
 
-        new MenuHelper().setup(jda);
+        //new MenuHelper().setup(jda);
 
         Runtime.getRuntime().addShutdownHook(new ShutDownHook(this));
 

@@ -18,14 +18,15 @@ public class DiscordUtility {
         intents.add(GatewayIntent.DIRECT_MESSAGE_TYPING);
         intents.add(GatewayIntent.GUILD_PRESENCES);
         intents.add(GatewayIntent.GUILD_VOICE_STATES);
-        intents.add(GatewayIntent.GUILD_EMOJIS);
+        intents.add(GatewayIntent.GUILD_EMOJIS_AND_STICKERS);
         intents.add(GatewayIntent.GUILD_MESSAGE_REACTIONS);
         return intents;
     }
 
     public static Collection<CacheFlag> getCacheFlags() {
         List<CacheFlag> cacheFlags = new ArrayList<>();
-        cacheFlags.add(CacheFlag.EMOTE);
+        cacheFlags.add(CacheFlag.EMOJI);
+        cacheFlags.add(CacheFlag.STICKER);
         cacheFlags.add(CacheFlag.VOICE_STATE);
         cacheFlags.add(CacheFlag.ACTIVITY);
         cacheFlags.add(CacheFlag.CLIENT_STATUS);

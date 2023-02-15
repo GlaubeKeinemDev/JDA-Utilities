@@ -1,7 +1,6 @@
 package de.glaubekeinemdev.discordutilities.utils;
 
 import de.glaubekeinemdev.discordutilities.DiscordBot;
-import de.glaubekeinemdev.discordutilities.menus.helper.MenuHelper;
 
 public class ShutDownHook extends Thread {
 
@@ -15,13 +14,13 @@ public class ShutDownHook extends Thread {
     public void run() {
         discordBot.getJda().shutdownNow();
         discordBot.getDataBaseManager().saveAllDataBases();
-        MenuHelper.getInstance().shutdown();
+        //MenuHelper.getInstance().shutdown();
     }
 
     @Override
     public synchronized void start() {
         discordBot.getJda().shutdownNow();
         discordBot.getDataBaseManager().saveAllDataBases();
-        MenuHelper.getInstance().shutdown();
+        //MenuHelper.getInstance().shutdown();
     }
 }

@@ -5,7 +5,7 @@ import de.glaubekeinemdev.discordutilities.commands.core.Command;
 import de.glaubekeinemdev.discordutilities.utils.AbstractEmbedBuilder;
 import net.dv8tion.jda.api.entities.Member;
 import net.dv8tion.jda.api.entities.Message;
-import net.dv8tion.jda.api.entities.TextChannel;
+import net.dv8tion.jda.api.entities.channel.unions.MessageChannelUnion;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,7 +35,7 @@ public class HelpCommand extends Command {
     }
 
     @Override
-    public void execute(String[] args, String command, Member commandSender, TextChannel channel, Message message) {
+    public void execute(String[] args, String command, Member commandSender, MessageChannelUnion channel, Message message) {
         AbstractEmbedBuilder embedBuilder = discordBot.getEmbedBuilder().setTitle("Verfügbare Commands").setDefaultFooter(commandSender);
 
         discordBot.getCommandCore().getCommands().forEach(eachCommand -> {
