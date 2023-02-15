@@ -30,7 +30,6 @@ public class DiscordBot {
     private Collection<GatewayIntent> intents = new ArrayList<>();
     private Collection<CacheFlag> cacheFlags = new ArrayList<>();
 
-
     private DiscordBotLogger logger;
 
     private String token;
