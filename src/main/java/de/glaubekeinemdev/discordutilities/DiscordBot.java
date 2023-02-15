@@ -27,8 +27,8 @@ public class DiscordBot {
     private CommandCore commandCore;
     private AbstractEmbedBuilder embedBuilder;
     private DataBaseManager dataBaseManager;
-    private Collection<GatewayIntent> intents;
-    private Collection<CacheFlag> cacheFlags;
+    private Collection<GatewayIntent> intents = new ArrayList<>();
+    private Collection<CacheFlag> cacheFlags = new ArrayList<>();
 
 
     private DiscordBotLogger logger;
