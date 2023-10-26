@@ -55,7 +55,8 @@ public abstract class Command {
      * @param channel the textchannel the command was written in
      * @param message the discord message object of the whole command with arguments and included prefix
      */
-    public abstract void wrongChannel(final String command, final Member commandSender, final MessageChannelUnion channel, final Message message);
+    public void wrongChannel(final String command, final Member commandSender, final MessageChannelUnion channel, final Message message) {
+    }
 
     /**
      * This is a permission check with checks if the user is able to execute the command
