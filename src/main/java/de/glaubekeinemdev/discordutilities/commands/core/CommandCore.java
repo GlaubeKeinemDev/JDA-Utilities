@@ -67,13 +67,13 @@ public class CommandCore extends ListenerAdapter {
                     }
 
                     if(allCommands.getAvailableChannels() == null) {
-                        System.out.println("Command " + commandPrefix + allCommands.commandName() + " executed by " + sender.getUser().getAsTag() + " in channel " + channel.getName());
+                        System.out.println("Command " + commandPrefix + allCommands.commandName() + " executed by " + sender.getUser().getName() + " in channel " + channel.getName());
                         allCommands.execute(args, commandName, sender, channel, sentMessage);
                         return true;
                     }
 
                     if(allCommands.getAvailableChannels() != null && allCommands.getAvailableChannels().contains(channel.getId())) {
-                        System.out.println("Command " + commandPrefix + allCommands.commandName() + " executed by " + sender.getUser().getAsTag() + " in channel " + channel);
+                        System.out.println("Command " + commandPrefix + allCommands.commandName() + " executed by " + sender.getUser().getName() + " in channel " + channel);
                         allCommands.execute(args, commandName, sender, channel, sentMessage);
                         return true;
                     }
