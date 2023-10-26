@@ -5,7 +5,6 @@ import de.glaubekeinemdev.discordutilities.utils.AbstractEmbedBuilder;
 import net.dv8tion.jda.api.entities.Guild;
 import net.dv8tion.jda.api.entities.Member;
 import net.dv8tion.jda.api.entities.Message;
-import net.dv8tion.jda.api.entities.channel.concrete.TextChannel;
 import net.dv8tion.jda.api.entities.channel.unions.MessageChannelUnion;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
@@ -72,10 +71,14 @@ public class CommandCore extends ListenerAdapter {
                         return true;
                     }
 
-                    if(allCommands.getAvailableChannels() != null && allCommands.getAvailableChannels().contains(channel.getId())) {
-                        System.out.println("Command " + commandPrefix + allCommands.commandName() + " executed by " + sender.getUser().getName() + " in channel " + channel);
-                        allCommands.execute(args, commandName, sender, channel, sentMessage);
-                        return true;
+                    if(allCommands.getAvailableChannels() != null) {
+                        if(allCommands.getAvailableChannels().contains(channel.getId())) {
+                            System.out.println("Command " + commandPrefix + allCommands.commandName() + " executed by " + sender.getUser().getName() + " in channel " + channel);
+                            allCommands.execute(args, commandName, sender, channel, sentMessage);
+                            return true;
+                        } else {
+                            allCommands.wrongChannel(commandName, sender, channel, sentMessage);
+                        }
                     }
 
                     return false;

@@ -37,12 +37,25 @@ public abstract class Command {
     public abstract String description();
 
     /**
-     * Called when the command is executed
+     *  Called when the command is executed
      *
-     * @param args    the arguments, the command was executed with
-     * @param command the executed commandName without Prefix
+     * @param args the arguments, the command was executed with
+     * @param command the actual executed command (without arguments) as string
+     * @param commandSender the sender as discord member
+     * @param channel the textchannel the command was written in
+     * @param message the discord message object of the whole command with arguments and included prefix
      */
     public abstract void execute(final String[] args, final String command, final Member commandSender, final MessageChannelUnion channel, final Message message);
+
+    /**
+     * This method is executed when the command got written in the wrong channel
+     *
+     * @param command the written command without arguments and prefix as a string
+     * @param commandSender the sender as discord member
+     * @param channel the textchannel the command was written in
+     * @param message the discord message object of the whole command with arguments and included prefix
+     */
+    public abstract void wrongChannel(final String command, final Member commandSender, final MessageChannelUnion channel, final Message message);
 
     /**
      * This is a permission check with checks if the user is able to execute the command
