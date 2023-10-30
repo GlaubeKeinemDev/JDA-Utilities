@@ -53,7 +53,7 @@ public class DiscordBotLogger {
             }
             Path logFile = logFolder.resolve(LOG_FILE);
             try {
-                Files.write(logFile, (message).getBytes(),
+                Files.write(logFile, (message + "\n").getBytes(),
                         Files.exists(logFile) ? StandardOpenOption.APPEND : StandardOpenOption.CREATE);
             } catch (IOException e) {
                 System.err.println("Could not write to log file");
