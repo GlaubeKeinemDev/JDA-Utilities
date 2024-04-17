@@ -5,6 +5,7 @@ import de.glaubekeinemdev.discordutilities.commands.core.Command;
 import de.glaubekeinemdev.discordutilities.commands.core.CommandCore;
 import de.glaubekeinemdev.discordutilities.database.DataBaseManager;
 import de.glaubekeinemdev.discordutilities.discordlogger.DiscordBotLogger;
+import de.glaubekeinemdev.discordutilities.menus.helper.MenuHelper;
 import de.glaubekeinemdev.discordutilities.utils.AbstractEmbedBuilder;
 import de.glaubekeinemdev.discordutilities.utils.DiscordUtility;
 import de.glaubekeinemdev.discordutilities.utils.ShutDownHook;
@@ -18,7 +19,6 @@ import net.dv8tion.jda.api.utils.cache.CacheFlag;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.List;
 
 public class DiscordBot {
 
@@ -94,11 +94,14 @@ public class DiscordBot {
                 .build()
                 .awaitReady();
 
-        //new MenuHelper().setup(jda);
-
         Runtime.getRuntime().addShutdownHook(new ShutDownHook(this));
 
         return jda;
+    }
+
+    public void useMenus() {
+        if(this.jda != null)
+            new MenuHelper().setup(this.jda);
     }
 
     public void setupCommandCore(final String commandInvoke) {
