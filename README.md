@@ -25,7 +25,7 @@ Maven
 <dependency>
     <groupId>com.github.GlaubeKeinemDev</groupId>
     <artifactId>JDA-Utilities</artifactId>
-    <version>1.3-SNAPSHOT</version>
+    <version>1.0-RELEASE</version>
     <scope>compile</scope>
 </dependency>
 ```
@@ -37,7 +37,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.github.GlaubeKeinemDev:JDA-Utilities:1.3-SNAPSHOT'
+    implementation 'com.github.GlaubeKeinemDev:JDA-Utilities:1.0-RELEASE'
 }
 ```
 
