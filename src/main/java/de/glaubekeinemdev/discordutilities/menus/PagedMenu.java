@@ -15,6 +15,21 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+/**
+ *
+ * Paged Menu - Create a multiple "page" menu, created with Embedbuilder which is changing its text/description
+ * This is perfect if you want to display long texts on "multiple pages".
+ * You can set the items per page manually
+ *
+ * This menu is doing everything on his own. There is no "action" function where you can handle stuff.
+ * This menu is automatically switching pages and deleting emotes.
+ * You can define allowed users + timeout for the perfect fit
+ *
+ * Use the PagedMenu.Builder class to build a PagedMenu Menu
+ *
+ * NOTE: You need to add at least 1 item otherwise the builder returns null
+ *
+ * */
 public class PagedMenu extends Menu {
 
     private final String stop = "⏹";
@@ -159,13 +174,13 @@ public class PagedMenu extends Menu {
 
     public static class Builder {
 
-        private long timeOut;
+        private long timeOut = -1;
         private final ArrayList<User> usableUser = new ArrayList<>();
 
         private List<String> items = new ArrayList<>();
         private int itemsPerPage;
         private String text;
-        private Color color;
+        private Color color = Color.WHITE;
 
 
         public Builder setTimeOut(long timeOut) {
@@ -204,15 +219,6 @@ public class PagedMenu extends Menu {
         }
 
         public PagedMenu build() {
-            if(timeOut < System.currentTimeMillis())
-                return null;
-
-            if(usableUser.isEmpty())
-                return null;
-
-            if(color == null)
-                return null;
-
             if(items.isEmpty())
                 return null;
 

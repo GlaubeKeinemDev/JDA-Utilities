@@ -27,8 +27,11 @@ public class MenuHelper {
         scheduledExecutorService.scheduleAtFixedRate(() -> {
 
             menuCache.forEach(eachMenu -> {
-                if(System.currentTimeMillis() > eachMenu.getTimeOut()) {
+                if(eachMenu.getTimeOut() > 0 && System.currentTimeMillis() > eachMenu.getTimeOut()) {
                     eachMenu.handleMenuTimeOuted();
+                    menuCache.remove(eachMenu);
+                }
+                if(eachMenu.isCancelled()) {
                     menuCache.remove(eachMenu);
                 }
             });

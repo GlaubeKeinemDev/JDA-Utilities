@@ -56,6 +56,9 @@ public abstract class Menu {
         if (member.getUser().isBot())
             return false;
 
+        if(this.allowedUsers.isEmpty())
+            return true;
+
         return allowedUsers.contains(member.getUser());
     }
 

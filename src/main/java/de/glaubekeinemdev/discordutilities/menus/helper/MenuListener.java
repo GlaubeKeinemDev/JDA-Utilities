@@ -17,7 +17,8 @@ public class MenuListener extends ListenerAdapter {
             return;
 
         MenuHelper.getInstance().getMenuCache().forEach(eachMenu -> {
-            eachMenu.handleReactionAdd(event.getMember(), event.getReaction(), event.getGuild());
+            if(event.getUser() != null && !event.getUser().isBot())
+                eachMenu.handleReactionAdd(event.getMember(), event.getReaction(), event.getGuild());
         });
     }
 
